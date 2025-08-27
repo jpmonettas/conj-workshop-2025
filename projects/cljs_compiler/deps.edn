@@ -1,0 +1,15 @@
+{:paths ["src"]
+ :deps {org.clojure/clojurescript {:local/root "./clojurescript_1.12.42"}}
+
+ ;; This is not needed if you have them globally (recommended)!
+ ;; Duplicated it here just because on VSCode it isn't easy to start a repl with
+ ;; global aliases the first time
+ :aliases
+ {:1.12-storm {:classpath-overrides {org.clojure/clojure nil}
+               :extra-deps {com.github.flow-storm/clojure {:mvn/version  "1.12.3-1"}
+                            com.github.flow-storm/flow-storm-dbg {:mvn/version "4.5.9"}}
+               :jvm-opts ["-Dflowstorm.theme=dark"]}
+
+  :fs-cljs-compiler-plugin {:extra-deps {com.github.flow-storm/flow-storm-cljs-compiler-plugin {:mvn/version "1.0.0-beta5"}}
+                            :jvm-opts ["-Dclojure.storm.instrumentOnlyPrefixes.cljsCompilerPlugin=cljs."
+                                       "-Dflowstorm.plugins.namespaces.cljsCompilerPlugin=flow-storm.plugins.cljs-compiler.all"]}}}

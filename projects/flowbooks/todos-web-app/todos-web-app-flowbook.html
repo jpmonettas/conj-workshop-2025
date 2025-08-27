@@ -1,0 +1,109 @@
+<html>
+  <head> <style> a {cursor: pointer; color: purple;} body {font-size: 20; font-family: 'sans-serif'; padding: 10px;} </style> </head>
+  <body>
+
+    <h1>Simple web app flowbook</h1>
+
+    <p>
+      This flowbook covers a very simple TODOs (server side) web app, written like in the early 2000s, 
+      made with <i>http-kit,ring,hiccup and compojure</i> for the web part and <i>next.jdbc</i> for the database part.      
+    </p>
+    
+    <p>
+      We are going to cover 3 flows :
+      <ul>
+        <li>Load the home page (recorded on flow-0)</li>
+        <li>Add a new todo item (recorded on flow-1)</li>
+        <li>Mark our new todo item as done (recorded on flow-2)</li>
+      </ul>
+    </p>
+
+    <b>This flowbooks recommeds the flow-storm-web-plugin loaded to better visualize the requests flows.</b>
+    
+    <h3>Loading the home page</h3>
+
+    <p>
+      Loading the homepage is composed of :
+      <ul>
+        <li><a onclick='gotoLocation.invoke(0,73,5)'>Handling the request</a></li>
+        <li><a onclick='gotoLocation.invoke(0,73,588)'>Retrieving all todo items from the db</a></li>
+        <li><a onclick='gotoLocation.invoke(0,73,612)'>Rendering the main page using hiccup</a></li>
+        <li><a onclick='gotoLocation.invoke(0,73,631)'>Sending back the response</a></li>        
+      </ul>
+    </p>
+    <p>
+      For an overview of this flow go to the "Web" plugin tab (if you have it loaded), select flow-0 and refresh.
+    </p>
+    
+    <p>
+    All starts with the user calling our http server (http-kit) with the root path "/". 
+    This will <a onclick='gotoLocation.invoke(0,73,5)'> create a ring request</a> and call our defined handler. 
+    We are using compojure for handling different requests with different code.
+    </p>
+
+    <p>
+      This will hit <a onclick='gotoLocation.invoke(0,73,6)'>our handler render-main-page</a> which will retrieve 
+      <a onclick='gotoLocation.invoke(0,73,588)'>all our todos data</a> from the DB. 
+    </p>
+
+    <p>
+      Let's dig a little bit deeper on how we are retrieving this data from the DB. 
+      For this, we are <a onclick='gotoLocation.invoke(0,73,573)'>calling jdbc/execute! </a>giving it a connection and a query to select everything 
+      from the todos table.
+    </p>
+
+    <p>
+      Right after that we are <a onclick='gotoLocation.invoke(0,73,575)'>mapping over the result set</a>, updating each todo map :done field.
+    </p>
+
+    <p>
+      Next we need to build the main page html before sending it back. For this we <a onclick='gotoLocation.invoke(0,74,591)'> map over all todo items </a> and using hiccup 
+      render our todos html, which we then wrap with more hiccup, finally 
+      using <a onclick='gotoLocation.invoke(0,73,612)'> hiccup/html function to render it to a string</a>.
+    </p>
+
+    <p>
+      Note the mechanism we are using to send data from the browser to the server are plain old html forms. 
+      We have a form for posting a new todo, and a form per todo item to mark it as done.
+    </p>
+
+    <h3>Add a new todo item</h3>
+
+    <p>
+      For an overview of this flow go to the "Web" plugin tab (if you have it loaded), select flow-1 and refresh.
+    </p>
+
+    <p>
+      Adding a todo item (server side), starts with handling the request on the "/add-todo" POST handler, and 
+      <a onclick='gotoLocation.invoke(1,77,8)'> extracting the todo-text parameter</a> from the request.
+    </p>
+
+    <p>
+      Next we <a onclick='gotoLocation.invoke(1,77,45)'>execute a insert</a>, using jdbc/execute! and our todo-text.
+    </p>
+
+    <p>
+      We then render the main mage as described in the first flow.
+    </p>
+    
+    <h3>Mark our new todo item as done</h3>
+
+    <p>
+      For an overview of this flow go to the "Web" plugin tab (if you have it loaded), select flow-2 and refresh.
+    </p>
+    
+    <p>
+      Marking a todo item as done, starts with handling a POST to "/mark-done", then 
+      <a onclick='gotoLocation.invoke(2,84,9)'>extracting and parsing the todo-id</a> from the request.
+    </p>
+
+    <p>
+      With the todo-id we procede to run a <a onclick='gotoLocation.invoke(2,84,13)'>jdbc/execute! update sql statement</a>
+      with our todo-id.
+    </p>
+
+    <p>
+      Same as in the previous two flows we render and return the main page again.
+    </p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{:paths ["src" "resources"]
+ :deps {org.apache.commons/commons-math3 {:mvn/version "3.6.1"}
+        org.clojure/core.async {:mvn/version "1.9.808-alpha1"}
+        org.openjfx/javafx-controls {:mvn/version "21.0.4-ea+1"}
+        org.openjfx/javafx-base {:mvn/version "21.0.4-ea+1"}
+        org.openjfx/javafx-graphics {:mvn/version "21.0.4-ea+1"}}
+ :aliases
+ {:dev
+  {:jvm-opts [;; If our systems have to deal with many recordings like in this case, we can set
+              ;; some properties that will help with the perf of our system.
+              ;; Most of the following options can be accomplish from the UI also
+
+              ;; First we can disable auto updating the UI, we can do it with a click as we need
+              "-Dflowstorm.autoUpdateUI=false"
+
+              ;; We can disable the call tree if we aren't going to use it for some extra performance
+              "-Dflowstorm.callTreeUpdate=false"
+
+              ;; Not needed in this case but the UI has a timeout (defaults to 5sec) on how much it can wait
+              ;; for the runtime to compute something, it can be increased if we need it
+              "-Dflowstorm.uiTimeoutMillis=10000"
+
+              ;; We can set a heap limit in Megabytes. When the limit is reached FlowStorm will stop recording
+              ;; automatically
+              "-Dflowstorm.heapLimit=3000"
+
+              ;; We can skip instrumenting some namespaces we are not interested in instrumeting
+              "-Dclojure.storm.instrumentSkipPrefixes=radio-snake.samplers.file-replay,radio-snake.frames"]
+   :extra-paths ["dev"]}
+
+
+  ;; This is not needed if you have them globally (recommended)!
+  ;; Duplicated it here just because on VSCode it isn't easy to start a repl with
+  ;; global aliases the first time
+  :1.12-storm {:classpath-overrides {org.clojure/clojure nil}
+               :extra-deps {com.github.flow-storm/clojure {:mvn/version  "1.12.3-1"}
+                            com.github.flow-storm/flow-storm-dbg {:mvn/version "4.5.9"}}
+               :jvm-opts ["-Dflowstorm.theme=dark"]}
+
+  :fs-async-flow-plugin {:extra-deps {com.github.flow-storm/flow-storm-async-flow-plugin {:mvn/version "1.0.1-alpha3"}}
+                         :jvm-opts ["-Dclojure.storm.instrumentOnlyPrefixes.asyncFlowPlugin=clojure.core.async.flow"
+                                    "-Dflowstorm.plugins.namespaces.asyncFlowPlugin=flow-storm.plugins.async-flow.all"]}}}

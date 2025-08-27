@@ -1,0 +1,9 @@
+{:deps {:aliases [:1.12-cljs-storm :dev]}
+ :nrepl {:port 7123}
+ :builds
+ {:dev {:target :browser
+        :devtools {:preloads [flow-storm.storm-preload visualizers]
+                   :http-port 8021
+                   :http-root "public"}
+        :modules {:main
+                  {:entries [mine-sweeper.main]}}}}}

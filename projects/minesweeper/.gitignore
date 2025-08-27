@@ -1,0 +1,7 @@
+/.cljs_node_repl/
+/.cpcache/
+/.shadow-cljs/
+/node_modules/
+/repl-client-debug
+/public/js
+/.clj-kondo/.cache/
