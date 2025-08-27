@@ -1,0 +1,29 @@
+.main-pane {
+    -fx-padding: 10;
+    -fx-background: #c3c3c3;
+}
+
+.canvas-pane {
+    -fx-padding: 100;
+} 
+
+.header-pane {
+    -fx-padding: 20;    
+}
+
+.segment-label {
+    -fx-text-fill: red;
+    -fx-background-color: black;
+    -fx-padding: 1;    
+}
+
+.box-hole {
+    -fx-border-color: #828282 #ffffff #ffffff #828282;
+    -fx-border-width: 3;    
+}
+
+.box-relief {
+    -fx-border-color: #ffffff #828282 #828282 #ffffff;
+    -fx-border-width: 3;    
+    
+}

@@ -1,0 +1,18 @@
+{:paths ["src" "public"]
+ :deps {;; for the clojurescript version
+        re-frame/re-frame {:mvn/version "1.4.3"}
+
+        ;; for the clojure version
+        org.openjfx/javafx-controls {:mvn/version "21.0.4-ea+1"}
+        org.openjfx/javafx-base {:mvn/version "21.0.4-ea+1"}
+        org.openjfx/javafx-graphics {:mvn/version "21.0.4-ea+1"}}
+ :aliases {:cljs-storm {:classpath-overrides {org.clojure/clojurescript nil}
+                        :extra-deps {thheller/shadow-cljs {:mvn/version "3.1.8"
+                                                           :exclusions [org.clojure/clojurescript]}
+                                     com.github.flow-storm/clojurescript {:mvn/version "1.12.42-0"}
+
+                                     com.github.flow-storm/flow-storm-inst {:mvn/version "4.5.5"}}
+                        :jvm-opts ["-Dcljs.storm.instrumentOnlyPrefixes=mine-sweeper"
+                                   "-Dcljs.storm.instrumentEnable=true"]}
+
+           :dev {:extra-paths ["dev"]}}}

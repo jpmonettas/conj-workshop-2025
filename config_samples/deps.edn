@@ -1,0 +1,22 @@
+;; You can setup your global ~/.lein/profiles.clj (on linux and macOS)
+;; or %USERPROFILE%\.lein\profiles.clj (on windows)
+{:aliases
+ {:1.12-storm {:classpath-overrides {org.clojure/clojure nil}
+               :extra-deps {com.github.flow-storm/clojure {:mvn/version  "1.12.3-1"}
+                            com.github.flow-storm/flow-storm-dbg {:mvn/version "4.5.8"}}
+               :jvm-opts ["-Dflowstorm.theme=dark"]}
+
+  :fs-web-plugin {:extra-deps {com.github.flow-storm/flow-storm-web-plugin {:mvn/version "1.0.3"}}
+                  :jvm-opts ["-Dclojure.storm.instrumentOnlyPrefixes.webPlugin=org.httpkit.server,ring.adapter.jetty,next.jdbc.result-set"
+                             "-Dflowstorm.plugins.namespaces.webPlugin=flow-storm.plugins.web.all"]}
+
+  :fs-cljs-compiler-plugin {:extra-deps {com.github.flow-storm/flow-storm-cljs-compiler-plugin {:mvn/version "1.0.0-beta5"}}
+                            :jvm-opts ["-Dclojure.storm.instrumentOnlyPrefixes.cljsCompilerPlugin=cljs."
+                                       "-Dflowstorm.plugins.namespaces.cljsCompilerPlugin=flow-storm.plugins.cljs-compiler.all"]}
+
+  :fs-async-flow-plugin {:extra-deps {com.github.flow-storm/flow-storm-async-flow-plugin {:mvn/version "1.0.1-alpha3"}}
+                         :jvm-opts ["-Dclojure.storm.instrumentOnlyPrefixes.asyncFlowPlugin=clojure.core.async.flow"
+                                    "-Dflowstorm.plugins.namespaces.asyncFlowPlugin=flow-storm.plugins.async-flow.all"]}
+
+  :fs-flowbook-plugin {:extra-deps {com.github.flow-storm/flow-storm-flowbook-plugin {:mvn/version "1.0.0-alpha1"}}
+                       :jvm-opts ["-Dflowstorm.plugins.namespaces.flowbookPlugin=flow-storm.plugins.flowbook.all"]}}}

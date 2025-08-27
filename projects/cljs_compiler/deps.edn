@@ -1,0 +1,2 @@
+{:paths ["src"]
+ :deps {org.clojure/clojurescript {:local/root "./clojurescript_1.12.42"}}}
