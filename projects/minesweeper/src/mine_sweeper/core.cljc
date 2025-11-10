@@ -188,7 +188,7 @@
   ;; Refresh the page to connect it to FlowStorm
   
 
-  ;; - Switch recording ON and click on the smile icon to retart the game
+  ;; - Switch recording ON and click on the smile icon to restart the game
   ;; - Since this is single threaded, some good ways to have an overview of the recordings
   ;;   are using the "Call tree" or the "Functions list", play with them
   ;; - Check out the "Call tree" and create-game (under initialize-db) to see how the main game structure looks
@@ -208,8 +208,8 @@
   ;;   - Let's jump into create-game code and step it
 
   ;; - Try to record some recursive reveals
-  ;; - Quick jump to reveal and add a print on the recursive-reveal call x and y
-  ;; - Quick jump to reveal-cell and add a print to (cell cells x y)
+  ;; - Quick jump to `reveal` and add a print on the `recursive-reveal` call `x` and `y`
+  ;; - Quick jump to `reveal-cell` and add a print to the expression `(cell cells x y)`
   ;; - Now go to "More tools -> Printers" and hit refresh
   ;; - You can double click on any "print" to make the stepper jump to that position
   ;; - Now we have a debug log without modifying our code
