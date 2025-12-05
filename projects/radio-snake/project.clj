@@ -33,7 +33,7 @@
                     "-Dclojure.storm.instrumentSkipPrefixes=radio-snake.samplers.file-replay,radio-snake.frames"]
          :resource-paths ["dev"]}
 
-   :1.12-storm {:dependencies [[com.github.flow-storm/clojure "1.12.3-1"]
+   :1.12-storm {:dependencies [[com.github.flow-storm/clojure "1.12.3-4"]
                                [com.github.flow-storm/flow-storm-dbg "4.5.9"]]
                 :exclusions [org.clojure/clojure]
                 :jvm-opts ["-Dflowstorm.theme=dark"]}

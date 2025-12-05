@@ -1,7 +1,7 @@
 ;; You can setup your global ~/.lein/profiles.clj (on linux and macOS)
 ;; or %USERPROFILE%\.lein\profiles.clj (on windows)
 {:1.12-storm
- {:dependencies [[com.github.flow-storm/clojure "1.12.3-1"]
+ {:dependencies [[com.github.flow-storm/clojure "1.12.3-4"]
                  [com.github.flow-storm/flow-storm-dbg "4.5.9"]]
   :exclusions [org.clojure/clojure]
   :jvm-opts ["-Dflowstorm.theme=dark"]}

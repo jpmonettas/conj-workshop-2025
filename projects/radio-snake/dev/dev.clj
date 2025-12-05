@@ -9,7 +9,7 @@
 (defn start []
   (let [{:keys [start-fn stop-fn]} (main/rf-snake-main
                                     {:mocked-samples "./data/remote_200k.samples"
-                                     :scopes #{:frame-source
+                                     :scopes #{#_:frame-source
                                                #_:am-demod
                                                #_:burst-splitter
                                                #_:normalizer}

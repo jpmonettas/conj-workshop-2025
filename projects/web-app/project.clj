@@ -12,7 +12,7 @@
   ;; Duplicated it here just because on VSCode it isn't easy to start a repl with
   ;; global aliases the first time
   :profiles
-  {:1.12-storm {:dependencies [[com.github.flow-storm/clojure "1.12.3-1"]
+  {:1.12-storm {:dependencies [[com.github.flow-storm/clojure "1.12.3-4"]
                                [com.github.flow-storm/flow-storm-dbg "4.5.9"]]
                 :exclusions [org.clojure/clojure]
                 :jvm-opts ["-Dflowstorm.theme=dark"]}
