@@ -7,9 +7,9 @@
                :jvm-opts ["-Dflowstorm.theme=dark"]}
 
   :1.12-cljs-storm {:classpath-overrides {org.clojure/clojurescript nil}
-                    :extra-deps {thheller/shadow-cljs {:mvn/version "3.1.8"
+                    :extra-deps {thheller/shadow-cljs {:mvn/version "3.3.2"
                                                        :exclusions [org.clojure/clojurescript]}
-                                 com.github.flow-storm/clojurescript {:mvn/version "1.12.42-2"}
+                                 com.github.flow-storm/clojurescript {:mvn/version "1.12.116-0"}
 
                                  com.github.flow-storm/flow-storm-inst {:mvn/version "4.5.9"}}}
 

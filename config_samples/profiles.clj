@@ -7,8 +7,8 @@
   :jvm-opts ["-Dflowstorm.theme=dark"]}
 
  :1.12-cljs-storm
- {:dependencies [[thheller/shadow-cljs "3.1.8"]
-                 [com.github.flow-storm/clojurescript "1.12.42-2"]
+ {:dependencies [[thheller/shadow-cljs "3.3.2"]
+                 [com.github.flow-storm/clojurescript "1.12.116-0"]
                  [com.github.flow-storm/flow-storm-inst "4.5.9"]]
   :exclusions [org.clojure/clojurescript]}
 
